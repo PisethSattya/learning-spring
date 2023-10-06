@@ -2,12 +2,12 @@ package com.frankmoley.linkedin_learning.learningspring.webservice;
 
 import com.frankmoley.linkedin_learning.learningspring.business.ReservationService;
 import com.frankmoley.linkedin_learning.learningspring.business.RoomReservation;
+import com.frankmoley.linkedin_learning.learningspring.data.Guest;
+import com.frankmoley.linkedin_learning.learningspring.data.Room;
 import com.frankmoley.linkedin_learning.learningspring.util.DateUtils;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -24,5 +24,22 @@ public class WebserviceController {
     public List<RoomReservation> getReservations(@RequestParam (value = "date",required = false) String dateString){
         Date date = dateUtils.createDateFromDateString(dateString);
         return reservationService.getRoomReservationsForDate(date);
+    }
+
+    @GetMapping("/guests")
+    public List<Guest> getGuest(){
+        return reservationService.getHotelGuests();
+    }
+
+    @PostMapping("/guests")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addGuest(@RequestBody Guest guest)
+    {
+        reservationService.addGuest(guest);
+    }
+
+    @GetMapping("/rooms")
+    public List<Room> getRooms(){
+        return reservationService.getRoom();
     }
 }
