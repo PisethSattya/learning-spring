@@ -2,6 +2,7 @@ package com.frankmoley.linkedin_learning.learningspring.util;
 
 import com.frankmoley.linkedin_learning.learningspring.business.ReservationService;
 import com.frankmoley.linkedin_learning.learningspring.business.RoomReservation;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -10,15 +11,11 @@ import java.util.Date;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class AppStartupEvent implements ApplicationListener<ApplicationReadyEvent>
 {
    private final ReservationService reservationService;
    private final DataUtils dataUtils;
-
-    public AppStartupEvent(ReservationService reservationService, DataUtils dataUtils) {
-        this.reservationService = reservationService;
-        this.dataUtils = dataUtils;
-    }
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event)

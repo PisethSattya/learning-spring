@@ -1,12 +1,14 @@
 package com.frankmoley.linkedin_learning.learningspring.business;
 
 import com.frankmoley.linkedin_learning.learningspring.data.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
+@RequiredArgsConstructor
 public class ReservationService
 {
 
@@ -14,11 +16,6 @@ public class ReservationService
     private final GuestRepository guestRepository;
     private final ReservationRepository reservationRepository;
 
-    public ReservationService(RoomRepository roomRepository, GuestRepository guestRepository, ReservationRepository reservationRepository) {
-        this.roomRepository = roomRepository;
-        this.guestRepository = guestRepository;
-        this.reservationRepository = reservationRepository;
-    }
 
     public List<RoomReservation> getRoomReservationsForDate(Date date)
     {

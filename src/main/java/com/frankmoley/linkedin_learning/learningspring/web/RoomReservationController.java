@@ -3,6 +3,7 @@ package com.frankmoley.linkedin_learning.learningspring.web;
 import com.frankmoley.linkedin_learning.learningspring.business.ReservationService;
 import com.frankmoley.linkedin_learning.learningspring.business.RoomReservation;
 import com.frankmoley.linkedin_learning.learningspring.util.DataUtils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,15 +15,12 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/reservations")
+@RequiredArgsConstructor
 public class RoomReservationController
 {
     private final DataUtils dataUtils;
     private final ReservationService reservationService;
 
-    public RoomReservationController(DataUtils dataUtils, ReservationService reservationService) {
-        this.dataUtils = dataUtils;
-        this.reservationService = reservationService;
-    }
 @RequestMapping(method = RequestMethod.GET)
     public String getReservations(@RequestParam(value = "date", required = false) String dateString, Model model)
     {
