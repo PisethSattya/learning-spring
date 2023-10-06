@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Component
-public class DataUtils
+public class DateUtils
 {
     public Date createDateFromDateString(String dateString)
     {

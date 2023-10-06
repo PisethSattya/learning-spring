@@ -15,7 +15,7 @@ import java.util.List;
 public class AppStartupEvent implements ApplicationListener<ApplicationReadyEvent>
 {
    private final ReservationService reservationService;
-   private final DataUtils dataUtils;
+   private final DateUtils dataUtils;
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event)
